@@ -1,0 +1,24 @@
+{
+  "name": "pct_backend",
+  "version": "1.0.0",
+  "description": "Backend REST-Api",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nadjastauber/PCT_Backend.git"
+  },
+  "author": "Nadja Stauber",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nadjastauber/PCT_Backend/issues"
+  },
+  "homepage": "https://github.com/nadjastauber/PCT_Backend#readme",
+  "dependencies": {
+    "dotenv": "^17.2.2",
+    "express": "^5.1.0",
+    "mongoose": "^8.18.3"
+  }
+}
