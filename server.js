@@ -1,4 +1,5 @@
 const express = require('express'); //express ist middleware für Weiterverarbeitung von http-Anfragen an Datenbank und zurück
+const cors = require('cors');       //erlaubt verwendung von Ressourcen aus verscheiden Servern (Backend/Frontend)
 const routes = require('./routes');
 const mongoose = require('mongoose');
 require('dotenv').config();
@@ -8,6 +9,7 @@ const app = express();
 const PORT = 3000;
 
 app.use(express.json());
+app.use(cors());        //cors für alle requests erlauben
 app.use('/', routes);  //hier können Weichen gestellt werden
 
 // connect to mongoDB
