@@ -31,7 +31,7 @@ router.get('/tasks/:id', async (req, res) => {
     
     //findOne gibt Objekt oder null zurück (vs. find gibt Array zurück)
     try{
-        let task = await Task.find({ _id: req.params.id }); // Objekte in der Datenbank suchen, die mit der id übereinstimmen
+        let task = await Task.findOne({ _id: req.params.id }); // Objekte in der Datenbank suchen, die mit der id übereinstimmen
         res.send(task);
     }
 
