@@ -14,7 +14,7 @@ router.get('/tasks', async (req, res) => {
 // post one task
 //request body enthält infos??
 router.post('/tasks', async (req, res) => {
-    const newTask = new Task({
+    const newTask = new Task({      //Werte aus req-Objekt auslesen
         status: req.body.status,
         name: req.body.name,
         date: req.body.date,
@@ -45,6 +45,7 @@ router.get('/tasks/:id', async (req, res) => {
 })
 
 // update one task
+// status wird nur über Button geändert
 router.patch('/tasks/:id', async(req, res) => {
     try {
         const task = await Task.findOne({ _id: req.params.id })
@@ -69,7 +70,7 @@ router.patch('/tasks/:id', async(req, res) => {
 router.delete('/tasks/:id', async(req, res) => {
     try {
         await Task.deleteOne({ _id: req.params.id })
-        res.status(204).send()
+        res.status(204).send() // status 204 schickt keine Meldung mit
     } catch {
         res.status(404)
         res.send({ error: "Task does not exist!" })
