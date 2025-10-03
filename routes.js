@@ -50,6 +50,10 @@ router.patch('/tasks/:id', async(req, res) => {
     try {
         const task = await Task.findOne({ _id: req.params.id })
 
+        if (req.body.status) {
+            task.status = req.body.status
+        }
+        
         if (req.body.name) {
             task.name = req.body.name
         }
