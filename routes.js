@@ -67,10 +67,11 @@ router.patch('/tasks/:id', async(req, res) => {
 });
 
 // delete one task via id
+//hier wird nur status gesendet
 router.delete('/tasks/:id', async(req, res) => {
     try {
         await Task.deleteOne({ _id: req.params.id })
-        res.status(204).send() // status 204 schickt keine Meldung mit
+        res.status(204).send()                                      // status 204 sendet keine Daten im Body, sondern nur Header
     } catch {
         res.status(404)
         res.send({ error: "Task does not exist!" })
