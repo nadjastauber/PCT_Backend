@@ -1,5 +1,5 @@
 const express = require('express');
-const router = express.Router(); //Router leitet Request an passende Route weiter
+const router = express.Router();        //middleware -> Router leitet Request an passende Route weiter
 const Task = require('./models/tasks');
 
 
@@ -12,7 +12,6 @@ router.get('/tasks', async (req, res) => {
 });
 
 // post one task
-//request body enthält infos??
 router.post('/tasks', async (req, res) => {
     const newTask = new Task({      //Werte aus req-Objekt auslesen
         status: req.body.status,
@@ -24,8 +23,8 @@ router.post('/tasks', async (req, res) => {
 });
 
 // get one task via id 
-// :name des Parameters (hat Bedeutung), wird wieder aus request Objekt ausgelesen
-// request params bezieht sich auf letzten Abschnitt URL?
+// :id --> name des Parameters, wird aus request Objekt ausgelesen
+// request params bezieht sich auf letzten Abschnitt URL
 
 router.get('/tasks/:id', async (req, res) => {
     
@@ -62,9 +61,9 @@ router.patch('/tasks/:id', async(req, res) => {
             task.date = req.body.date
         }
 
-        await Task.updateOne({ _id: req.params.id }, task);     //updateOne ändert und sendet id zurück (sehe ich das?)
+        await Task.updateOne({ _id: req.params.id }, task);     
         res.send(task)
-    } catch {                                                   //brauche ich den zweiten Teil, ich debe die Ids ja eig nicht ein??
+    } catch {                                                   //brauche ich den zweiten Teil, ich gebe die Ids ja eig nicht ein??
        res.status(404)
         res.send({ error: "Task does not exist!" })
     }
