@@ -2,8 +2,6 @@ const express = require('express');
 const router = express.Router();        //middleware -> Router leitet Request an passende Route weiter
 const Task = require('./models/tasks');
 
-
-
 // get all tasks
 router.get('/tasks', async (req, res) => {
     const allTasks = await Task.find();
