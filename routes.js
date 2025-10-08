@@ -4,34 +4,20 @@ const Task = require('./models/tasks');
 
 // get all tasks
 router.get('/tasks', async (req, res) => {
-
-    try{
-         const allTasks = await Task.find();
+    const allTasks = await Task.find();
     console.log(allTasks);
     res.send(allTasks);
-    }   
-
-    catch{
-        res.status(404)
-        res.send({ error: "Could not get Todos." })
-    }
 });
 
 // post one task
 router.post('/tasks', async (req, res) => {
-    try { const newTask = new Task({      //Werte aus req-Objekt auslesen
+    const newTask = new Task({      //Werte aus req-Objekt auslesen
         status: req.body.status,
         name: req.body.name,
         date: req.body.date,
     })
     await newTask.save();
     res.send(newTask);
-    }
-    catch{
-        res.status(404)
-        res.send({ error: "Todo was not posted." })
-    }
-    
 });
 
 // get one task via id 
